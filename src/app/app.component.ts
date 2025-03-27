@@ -9,9 +9,14 @@ import { OlympicService } from './core/services/olympic.service';
     standalone: false
 })
 export class AppComponent implements OnInit {
+  data: any;
+
   constructor(private olympicService: OlympicService) {}
 
   ngOnInit(): void {
-    this.olympicService.loadInitialData().pipe(take(1)).subscribe();
+    this.olympicService.getOlympics().subscribe((response) =>{
+      this.data = response;
+      console.log(this.data);//affiche dans la console les données
+    });
   }
 }
