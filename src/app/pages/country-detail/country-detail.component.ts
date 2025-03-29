@@ -15,6 +15,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 export class CountryDetailComponent implements OnInit {
 countryData: OlympicsData |  undefined;
   chartData: {name: string; series: {name: string; value: number}[]}[] = [];
+  totalParticipations: number = 0;
+  totalMedals: number = 0;
+  totalAthletes: number = 0;
 
   constructor(private route: ActivatedRoute,
     private olympicService: OlympicService
@@ -33,6 +36,13 @@ countryData: OlympicsData |  undefined;
           value: participation.medalsCount
         })) || []
       }];
+    this.totalParticipations = this.countryData?.participations.length || 0;
+
+    this.totalMedals = this.countryData?.participations.reduce((sum, participation) => 
+      sum + participation.medalsCount, 0) || 0;
+
+    this.totalAthletes = this.countryData?.participations.reduce((sum, participation) =>
+      sum + participation.athleteCount, 0) || 0;
     })
   }
 }
