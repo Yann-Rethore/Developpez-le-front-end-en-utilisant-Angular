@@ -1,4 +1,14 @@
 <h2>Olympic games app</h2>
-<div *ngIf="olympics$">
-<pre>{{ olympics$ | async | json }}</pre>
+<div *ngIf="olympics$ | async as olympics">
+
+<ngx-charts-pie-chart
+  [view]="[700, 400]"
+  [results]="olympics"
+  [legend]="true"
+  [explodeSlices]="false"
+  [labels]="true"
+  [doughnut]="false"
+  [gradient]="false"
+  (select)="onSelect($event)">
+</ngx-charts-pie-chart>
 </div>

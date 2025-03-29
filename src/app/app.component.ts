@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { OlympicService } from './core/services/olympic.service';
+import { OlympicsData } from './core/models/Olympic';
 
 @Component({
     selector: 'app-root',
@@ -9,7 +10,7 @@ import { OlympicService } from './core/services/olympic.service';
     standalone: false
 })
 export class AppComponent implements OnInit {
-  data: any;
+  data: OlympicsData[] = [];
 
   constructor(private olympicService: OlympicService) {}
 
