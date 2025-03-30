@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicsData } from 'src/app/core/models/Olympic';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 
 @Component({
   selector: 'app-country-detail',
-  imports: [CommonModule, NgxChartsModule],
   templateUrl: './country-detail.component.html',
-  styleUrl: './country-detail.component.scss'
+  styleUrl: './country-detail.component.scss',
+  standalone : false
 })
 export class CountryDetailComponent implements OnInit {
-countryData: OlympicsData |  undefined;
+  view: [number, number] = [700, 400]; // Dimensions par défaut
+  countryData: OlympicsData |  undefined;
   chartData: {name: string; series: {name: string; value: number}[]}[] = [];
   totalParticipations: number = 0;
   totalMedals: number = 0;
   totalAthletes: number = 0;
+
 
   constructor(private route: ActivatedRoute,
     private olympicService: OlympicService
@@ -44,6 +45,25 @@ countryData: OlympicsData |  undefined;
     this.totalAthletes = this.countryData?.participations.reduce((sum, participation) =>
       sum + participation.athleteCount, 0) || 0;
     })
+
+
+    this.updateChartSize(); // Met à jour la taille au chargement
+
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.updateChartSize(); // Met à jour la taille lors du redimensionnement
+  }
+
+  private updateChartSize(): void {
+    const width = window.innerWidth * 0.8; // 80% de la largeur de l'écran
+    const height = window.innerHeight * 0.5; // 50% de la hauteur de l'écran
+    this.view = [width, height];
+  }
+
+  
 }
+
+
 

@@ -8,12 +8,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HeaderComponent } from './pages/header/header.component';
+import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    CountryDetailComponent,
     NotFoundComponent
   ],
   imports: [

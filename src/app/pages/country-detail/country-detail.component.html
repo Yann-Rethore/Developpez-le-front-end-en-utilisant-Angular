@@ -1,7 +1,5 @@
-<h2>Country Details</h2>
 <div *ngIf="countryData">
   <h1><strong>Country:</strong> {{ countryData.country }}</h1>
-  <!-- Blocs d'informations -->
   <div class="info-container">
     <div class="info-box">
       <h3>Total Participations</h3>
@@ -18,16 +16,21 @@
   </div>
   <!-- Graphique ngx-charts -->
   <ngx-charts-line-chart
-    [view]="[700, 400]"
+    [view]="view"
     [scheme]="'cool'"
     [results]="chartData"
     [xAxis]="true"
     [yAxis]="true"
-    [legend]="true"
+    [legend]="false"
     [showXAxisLabel]="true"
     [showYAxisLabel]="true"
     [xAxisLabel]="'year'"
     [yAxisLabel]="'medalsCount'"
     [autoScale]="true">
   </ngx-charts-line-chart>
+</div>
+
+<!-- lien de retour-->
+<div class="back-to-home">
+  <a [routerLink]="['']" class="back-link">← Back to Home</a>
 </div>
