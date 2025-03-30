@@ -1,4 +1,18 @@
 <h2>Olympic games app</h2>
+
+<!-- Blocs d'informations -->
+<div class="info-container">
+  <div class="info-box">
+    <h3>Total Countries</h3>
+    <p>{{ totalCountries }}</p>
+  </div>
+  <div class="info-box">
+    <h3>Max Participations</h3>
+    <p>{{ nombreDeJo }}</p>
+  </div>
+</div>
+
+
 <div *ngIf="olympics$ | async as olympics">
 
 <ngx-charts-pie-chart

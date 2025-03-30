@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { count, map } from 'rxjs/operators';
+import { count, map, tap, catchError } from 'rxjs/operators';
 import { Observable, of, partition } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { Router } from '@angular/router';
@@ -24,15 +24,22 @@ export class HomeComponent implements OnInit {
       }
     }
   ]
-  );
+  )
+  public olympicsDatas$: Observable<OlympicsData[]> = new Observable();
+  public totalCountries: number =0;
+  public nombreDeJo: number = 0;
 
   constructor(private olympicService: OlympicService,
+    private olympicService2: OlympicService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    
     this.olympics$ = this.olympicService.getOlympics().pipe(
-      map((data:OlympicsData[]) => 
+      map((data:OlympicsData[]) =>
+        
+        
         data.map((item) => ({
           name: item.country,
           value: item.participations.reduce(
@@ -42,11 +49,23 @@ export class HomeComponent implements OnInit {
           id: item.id,
           country: item.country,
           participations: item.participations
+          
           }
         }))
-      ) 
-    );  
+      ),
+      tap((data) => {
+        this.totalCountries = data.length,
+        this.nombreDeJo = Math.max(
+          ...data.map((country) => country.extra.participations.length) 
+        );
+        console.log('Total Countries:', this.totalCountries);
+        console.log('Max Participations:', this.nombreDeJo);
+      })
+    );
   }
+    
+
+  
 
   onSelect(data: ChartOlympicsData): void {
     console.log('Contry clicked:' ,data)
