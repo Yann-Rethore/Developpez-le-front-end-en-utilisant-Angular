@@ -16,7 +16,7 @@
 <div *ngIf="olympics$ | async as olympics">
 
 <ngx-charts-pie-chart
-  [view]="[700, 400]"
+  [view]="view"
   [results]="olympics"
   [legend]="true"
   [explodeSlices]="false"

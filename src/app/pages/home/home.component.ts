@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { count, map, tap, catchError } from 'rxjs/operators';
 import { Observable, of, partition } from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit {
   public olympicsDatas$: Observable<OlympicsData[]> = new Observable();
   public totalCountries: number =0;
   public nombreDeJo: number = 0;
+
+  public view: [number, number] = [700, 400]; // Dimensions par défaut
 
   constructor(private olympicService: OlympicService,
     private olympicService2: OlympicService,
@@ -62,7 +64,20 @@ export class HomeComponent implements OnInit {
         console.log('Max Participations:', this.nombreDeJo);
       })
     );
+    this.updateChartSize(); // Met à jour la taille au chargement
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
+    this.updateChartSize(); // Met à jour la taille lors du redimensionnement
+  }
+
+  private updateChartSize(): void {
+    const width = window.innerWidth * 0.8; // 80% de la largeur de l'écran
+    const height = window.innerHeight * 0.5; // 50% de la hauteur de l'écran
+    this.view = [width, height];
+  }
+  
     
 
   
