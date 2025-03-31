@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { OlympicsData } from '../models/Olympic';
+import { ChartOlympicsData, OlympicsData } from '../models/Olympic';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +15,7 @@ export class OlympicService {
   getOlympics(): Observable<OlympicsData[]> {
     return this.http.get<OlympicsData[]>(this.jsonUrl)
   }
+
+  
 
 }

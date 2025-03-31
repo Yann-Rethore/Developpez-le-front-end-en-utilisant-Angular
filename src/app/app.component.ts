@@ -11,15 +11,8 @@ import { OlympicsData } from './core/models/Olympic';
     standalone: false,
     
 })
-export class AppComponent implements OnInit {
-  data: OlympicsData[] = [];
+export class AppComponent {
+  title = 'olympic-games-starter';
 
-  constructor(private olympicService: OlympicService) {}
-
-  ngOnInit(): void {
-    this.olympicService.getOlympics().subscribe((response) =>{
-      this.data = response;
-      console.log(this.data);//affiche dans la console les données
-    });
-  }
+  
 }
