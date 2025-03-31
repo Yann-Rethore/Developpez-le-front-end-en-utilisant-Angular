@@ -7,7 +7,7 @@
   h1 {
     text-align: center; /* Centre le texte horizontalement */
     margin-bottom: 20px; /* Ajoute un espacement en bas */
-    color: #ffc400; /* Couleur or */
+    color: #cd7f32; /* Couleur bronze */
     font-size: 28px; /* Taille de police */
     font-weight: bold; /* Texte en gras */
   }
@@ -58,4 +58,22 @@
     &:hover {
       color: #d38181; /* Couleur or plus foncée au survol */
     }
+
+    @media (max-width: 768px) {
+      .info-box {
+        flex: 1 1 calc(50% - 20px); /* 2 par ligne sur les tablettes */
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .info-box {
+        flex: 1 1 100%; /* 1 par ligne sur les petits écrans */
+      }
+    
+      .chart-container {
+        flex-direction: column;
+        padding: 10px;
+      }
+    }
+
   }
