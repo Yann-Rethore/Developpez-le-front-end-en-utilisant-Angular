@@ -1,5 +1,5 @@
 import { Participation } from "./Participation";
-
+//Interface pour les données des JO
 export interface OlympicsData {
             id: number,
             country: string,
@@ -9,7 +9,7 @@ export interface OlympicsData {
 
     
 }
-        
+//Interface pour les données du graphique  
 export interface ChartOlympicsData {
     name: string;
     value: number;
