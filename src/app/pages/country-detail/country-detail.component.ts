@@ -29,7 +29,7 @@ export class CountryDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Récupération de l'ID du pays depuis l'URL
-    // et appel du service pour récupérer les données des JO
+    // et appel du service par snapshot pour récupérer les données des JO
     const countryId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.olympicService

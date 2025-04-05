@@ -1,14 +1,19 @@
 
-<h1><strong>Olympic Games App</strong></h1>
+<div class = "title-container">
+  <div class="title-box">
+    <h1>Medals per Country</h1>
+  </div>
+</div>
+
 <!-- Infos sur les participations des pays-->
 <div class="info-container">
   <div class="info-box">
-    <h3>Total Countries</h3>
-    <p>{{ totalCountries }}</p>
+    <h3>Number of JOs</h3>
+    <p>{{ nombreDeJo }}</p>
   </div>
   <div class="info-box">
-    <h3>Max Participations</h3>
-    <p>{{ nombreDeJo }}</p>
+    <h3>Number of Countries</h3>
+    <p>{{ totalCountries }}</p>
   </div>
 </div>
 
@@ -18,7 +23,7 @@
 <ngx-charts-pie-chart
   [view]="view"
   [results]="olympics"
-  [legend]="true"
+  [legend]="false"
   [explodeSlices]="false"
   [labels]="true"
   [doughnut]="false"
@@ -26,3 +31,4 @@
   (select)="onSelect($event)">
 </ngx-charts-pie-chart>
 </div>
+
