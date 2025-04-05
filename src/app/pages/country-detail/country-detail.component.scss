@@ -7,11 +7,11 @@
 
 .title-box {
   text-align: center;
-  background-color: rgb(2, 95, 80); /* couleur de fond blanc */
+  background-color: #147A96; /* couleur de fond blanc */
   color: rgb(253, 250, 250); /* Couleur du texte */
   padding: 5px; /* Espacement interne */
   border-radius: 8px; /* Coins arrondis */
-  border-color: rgb(2, 95, 80); /* Couleur de la bordure */
+  border-color: #147A96; /* Couleur de la bordure */
   text-align: center; /* Centrer le texte */
   display: inline-block; /* Permet de centrer le texte */
 }
@@ -39,7 +39,7 @@
     color: rgb(87, 89, 90); /* Couleur du texte */
     padding: 5px; /* Espacement interne */
     border-radius: 8px; /* Coins arrondis */
-    border-color: rgb(2, 95, 80); /* Couleur de la bordure */
+    border-color: #147A96; /* Couleur de la bordure */
     border-width: 2px; /* Épaisseur de la bordure */
     border-style: solid; /* Style de la bordure */
     text-align: center; /* Centrer le texte */
@@ -78,14 +78,14 @@
   }
   
   .back-link {
-    color: rgb(98, 187, 172); /* Couleur de base */
+    color: rgb(66, 195, 212); /* Couleur de base */
     text-decoration: none; /* Supprime le soulignement */
     font-size: 18px;
     font-weight: bold;
     transition: color 0.3s ease;
   
     &:hover {
-      color: rgb(2, 95, 80); /* Couleur or plus foncée au survol */
+      color: #147A96; /* Couleur or plus foncée au survol */
     }
 
     
